@@ -1,0 +1,29 @@
+<h1>도와주세요</h1>
+<div class="container" style="margin-top:50px;">
+<form >
+  <div>
+    <label for="exampleInputEmail1">제목:</label>
+  <span style = "font-weight:bold;"><%= @one_help.title %></span>
+  <div class="well">
+  <%= @one_help.content %>
+  </div>
+
+</form>
+</div>
+<label>리플 </label>
+<div class="well">
+<% @one_help.helpres.each do |r|%>
+<p><%= r.content %> </p>
+<% end %>
+</div>
+
+
+<form action="/helpre" method="POST">
+    <input type="hidden" value="<%= @one_help.id %>" name="helpre">
+    <label for="exampleInputPassword1">리플쓰기</label>
+    <textarea name="content" class="form-control" row="5" id="comments" placeholder="리플을 써주세요"></textarea>
+
+
+
+  <button type="submit" class="btn btn-default">쓰기</button>        <a href="/help_list"> <button type="submit" class="btn btn-default">목록</button></a>
+</form>
